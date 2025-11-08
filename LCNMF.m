@@ -1,13 +1,12 @@
 function [U,V]=LCNMF(X,n,view_num,gnd,P,para,l)
-C = length(unique(gnd));  % 簇的个数
-%% 参数设置
-K_search = para.k;
+C = length(unique(gnd)); %number of clusters
+K_search = para.k;  
 alpha = para.aplha;
 beta  = para.beta;
 maxiter = 100;
 
 V_star = zeros(n-l,C);
-%% 初始化变量
+
 for i = 1: view_num
     [Xiter{i},gnditer]=randpermData(X{i},gnd,C,n,l); 
     P_old = zeros(l,C);
